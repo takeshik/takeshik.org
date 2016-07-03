@@ -1,4 +1,4 @@
----
+﻿---
 layout: post
 title: "Expression Trees with IL Emit"
 date: 2011-12-14 21:09:56
@@ -99,13 +99,13 @@ expr.CompileToMethod(method);
 
 が送出されてしまいます。
 
-Mono 2.10.6 の System.Core.dll 内の System.Linq.Expressions.LambdaExpression.CompileToMethodInternal メソッドには、
+Mono 2.10.6 の System.Core.dll 内の `System.Linq.Expressions.LambdaExpression.CompileToMethodInternal` メソッドには、
 
 ```csharp
 ContractUtils.Requires(method.IsStatic, "method");
 ```
 
-というコードが含まれており、ここから LambdaExpression.CompileToMethod メソッドは instance メソッドをサポートしていない、と推定できます。
+というコードが含まれており、ここから `LambdaExpression.CompileToMethod` メソッドは instance メソッドをサポートしていない、と推定できます。
 
 ## 解決策の構築
 
@@ -114,7 +114,7 @@ ContractUtils.Requires(method.IsStatic, "method");
 検討の結果、以下のようにすることで制限を回避し、当初目的を達成することができます。
 
 * LambdaExpression.CompileToMethod メソッドを実行する前に作成しようとする型 (以下''対象型''と呼称) の (外観的な) 定義を終了してしまう。
-* 対象型 (のメソッド及びコンストラクタ) の実際の定義は、対象型のネストされた型に static メソッドとして定義し、対象型のメソッドは実際の定義を呼び出すスタブ コードを (ILGenerator を用いて) emit する。
+* 対象型 (のメソッド及びコンストラクタ) の実際の定義は、対象型のネストされた型に static メソッドとして定義し、対象型のメソッドは実際の定義を呼び出すスタブ コードを (`ILGenerator` を用いて) emit する。
     * フィールドの初期化も内部型に用意した static メソッドによって行う。
 
 具体的には、以下のような定義の型:
@@ -183,21 +183,21 @@ public class TargetType
 }
 ```
 
-上において、LambdaExpression.CompileMethod メソッドで生成する必要がある部分 (ユーザ定義部分) は、
+上において、`LambdaExpression.CompileMethod` メソッドで生成する必要がある部分 (ユーザ定義部分) は、
 
-* TargetType.Impl.X_Init(TargetType)
-* TargetType.Impl.Ctor(TargetType, int)
-* TargetType.Impl.Func(TargetType, int)
+* `TargetType.Impl.X_Init(TargetType)`
+* `TargetType.Impl.Ctor(TargetType, int)`
+* `TargetType.Impl.Func(TargetType, int)`
 
 のみであり、残りは全て型の定義状況から導け、また、Emit API を用いて定義する必要があります。
 
 このようにすることで、以下の効果が得られます:
 
 * ユーザ定義部分を全て static メソッドにすることができる
-    * LambdaExpression.CompileToMethod メソッドの、instance メソッドを生成できないという制限を回避できます。
+    * `LambdaExpression.CompileToMethod` メソッドの、instance メソッドを生成できないという制限を回避できます。
 * ユーザ定義部分が全て内部クラスに存在する形となる
-* 内部クラスは外側のクラスが TypeBuilder.CreateType メソッドを呼び出した後に同じく TypeBuilder.CreateType メソッドを呼び出すことになる
-    * ユーザ定義部分が全て内部クラス内にあることにより、先に外観部分を定義した外側のクラスを CreateType することができます。そうすることで、Expression Trees API が ～Builder オブジェクトに触る可能性を回避することができます。
+* 内部クラスは外側のクラスが `TypeBuilder.CreateType` メソッドを呼び出した後に同じく `TypeBuilder.CreateType` メソッドを呼び出すことになる
+    * ユーザ定義部分が全て内部クラス内にあることにより、先に外観部分を定義した外側のクラスを `CreateType` することができます。そうすることで、Expression Trees API が `...Builder` オブジェクトに触る可能性を回避することができます。
     * また、具体的なアクセシビリティ設定にも依りますが、内部クラスは一般に外側のクラスの private メンバにアクセスすることができます。
 
 従って、先に示した問題点を全て解決することができます。
@@ -603,4 +603,4 @@ C# Advent Calendar ということですが、なにやらかなり C# 分が少
 
 一般に需要があるかどうかは激しく疑問ですが、Expression Trees や Emit API の使い方の一つとして、参考になれば幸いであります。
 
-なお、この記事は私が制作している Expression Trees ベースのスクリプト言語 [Yacq](http://www.yacq.net/wiki/Ja%3AWikiStart) において[動的型生成機能](https://github.com/takeshik/yacq/blob/master/Yacq/SystemObjects/YacqType.cs)を導入するにあたって得た知見を基に執筆されました。
+なお、この記事は私が制作している Expression Trees ベースのスクリプト言語 [Yacq](http://yacq.net) において[動的型生成機能](https://github.com/takeshik/yacq/blob/cd7159d34c09b35e72ceb9c6e35d15a2940392e7/Yacq/SystemObjects/YacqType.cs)を導入するにあたって得た知見を基に執筆されました。

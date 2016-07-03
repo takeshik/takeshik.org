@@ -130,7 +130,7 @@ var dic = new Dictionary<Symbol, string>()
     { symB, "baz" },
 };
 
-Console.WriteLine(symA == symA); // False
+Console.WriteLine(symA == symA); // True
 Console.WriteLine(Symbol.Create("hoge") == dic.First(x => x.Value == "foo").Key); // True
 Console.WriteLine(symA == symB); // False
 Console.WriteLine(dic["hoge"]); // foo

@@ -1,4 +1,4 @@
-layout: post
+﻿layout: post
 title: "エレメンタル プログラミングのすゝめ"
 date: 2015-02-28 01:54:05
 comments: true
@@ -184,3 +184,10 @@ public object OperationWhichMayFail()
 
 <blockquote class="twitter-tweet" lang="en"><p>エレメンタル プログラミングが提唱された。今後の展開に期待したい</p>&mdash; ぐらばく (@Grabacr07) <a href="https://twitter.com/Grabacr07/status/571306514507366400">February 27, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## リンク
+
+* [NuGet - ElementalAnnotations-Dualism](https://www.nuget.org/packages/ElementalAnnotations-Dualism/)
+    * 光と闇をプロジェクトに導入する NuGet パッケージ
+* [GitHub - takeshik/ElementalAnnotations](https://github.com/takeshik/ElementalAnnotations)
+    * ソースコード

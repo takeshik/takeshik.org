@@ -1,4 +1,4 @@
----
+﻿---
 layout: post
 title: "Expression Trees をシリアライズする"
 date: 2012-12-14 22:58:07
@@ -35,7 +35,7 @@ tags:
 
 こんな記事を書くくらいなので、もう既に明らかになっているようなことですが…
 
-式木を構成する式ノードの既定型 `Expression` クラスの [定義](http://msdn.microsoft.com/ja-jp/library/system.linq.expressions.expression.aspx) を見てみると…
+式木を構成する式ノードの既定型 `Expression` クラスの[定義](http://msdn.microsoft.com/ja-jp/library/system.linq.expressions.expression.aspx)を見てみると…
 
 ```csharp
 public abstract class Expression
@@ -51,7 +51,7 @@ CodePlex を見てみると、[Expression Tree Serializer](http://expressiontree
 
 ## 式木を無理やりシリアライズ
 
-ということで、式木をシリアライズしましょう。方法は一つしかないでしょう。一種のプロキシ ([`RealProxy`](http://msdn.microsoft.com/ja-jp/library/system.runtime.remoting.proxies.realproxy.aspx) じゃないです) 的な型を作って、それを経由してシリアライズ・デシリアライズするのです！
+ということで、式木をシリアライズしましょう。方法は一つしかないでしょう。一種のプロキシ <small>([`RealProxy`](http://msdn.microsoft.com/ja-jp/library/system.runtime.remoting.proxies.realproxy.aspx) じゃないです)</small> 的な型を作って、それを経由してシリアライズ・デシリアライズするのです！
 
 具体的な式ノードの種別は、 [`ExpressionType` 列挙体](http://msdn.microsoft.com/ja-jp/library/bb361179.aspx) を参照すれば一望できます…これを全部網羅するのが目標となります…
 
@@ -75,46 +75,22 @@ public class BinaryNode
     : Node
 {
     [DataMember]
-    public ExpressionType NodeType
-    {
-        get;
-        set;
-    }
+    public ExpressionType NodeType { get; set; }
 
     [DataMember]
-    public Node Left
-    {
-        get;
-        set;
-    }
+    public Node Left { get; set; }
 
     [DataMember]
-    public Node Right
-    {
-        get;
-        set;
-    }
+    public Node Right { get; set; }
     
     [DataMember]
-    public bool IsLifted
-    {
-        get;
-        set;
-    }
+    public bool IsLifted { get; set; }
 
     [DataMember]
-    public MethodRef Method
-    {
-        get;
-        set;
-    }
+    public MethodRef Method { get; set; }
 
     [DataMember]
-    public Lambda Conversion
-    {
-        get;
-        set;
-    }
+    public Lambda Conversion { get; set; }
     
     public static BinaryNode Serialize(BinaryExpression expr)
     {
@@ -156,8 +132,7 @@ public class BinaryNode
 ```csharp
 [DataContract]
 [Serializable]
-public class Parameter
-    : Node
+public class Parameter : Node
 {
     private static readonly Dictionary<ParameterExpression, Parameter> _parameterReverseCache
         = new Dictionary<ParameterExpression, Parameter>();
@@ -166,11 +141,7 @@ public class Parameter
         = new Dictionary<Parameter, ParameterExpression>();
 
     [DataMember]
-    public String Name
-    {
-        get;
-        set;
-    }
+    public String Name { get; set; }
     
     public static Parameter Serialize(ParameterExpression expression)
     {
@@ -224,7 +195,7 @@ internal static TValue TryGetValue<TKey, TValue>(this IDictionary<TKey, TValue> 
 式木をシリアライズできるということは、シリアライズにより発生する利点を全て享受できるということです。当然ですが。つまり:
 
 * 式木の内容をファイルに保存し、読み込むことができる。
-* 式木を AppDomain 境界を超えて引き渡すことができる。
+* 式木を `AppDomain` 境界を超えて引き渡すことができる。
     * リモート ホストや [sandbox ドメイン上で実行させたりする](http://msdn.microsoft.com/ja-jp/library/bb763046.aspx) ことができるようになる
 
 といった内容です。べんり！
@@ -284,7 +255,7 @@ RuntimeType.GetCachedName(TypeNameKind.ToString)
 
 ## 参考
 
-* [Yacq における式木シリアライズのためのクラス群](https://github.com/takeshik/yacq/tree/master/Yacq/Serialization)
+* [Yacq における式木シリアライズのためのクラス群](https://github.com/takeshik/yacq/tree/b2325f8cdb590d601621cff28d58b816ec36dfdd/Yacq/Serialization)
 * 他の式木に絡んだ Advent Calendar 記事
-    * Esolang Advent Calendar 2012 - [言語基盤としての Expression Trees、そして Yacq](https://github.com/takeshik/articles/blob/master/dotnet/expression-trees-and-yacq.md)
-    * C# Advent Calendar 2011 - [Expression Trees with IL Emit](https://github.com/takeshik/articles/blob/master/dotnet/expression-trees-with-il-emit.md)
+    * Esolang Advent Calendar 2012 - [言語基盤としての Expression Trees、そして Yacq](/blog/2012/12/05/expression-trees-and-yacq/)
+    * C# Advent Calendar 2011 - [Expression Trees with IL Emit](/blog/2011/12/14/expression-trees-with-il-emit/)

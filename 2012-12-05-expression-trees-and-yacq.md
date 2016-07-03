@@ -1,4 +1,4 @@
----
+﻿---
 layout: post
 title: "言語基盤としての Expression Trees、そして Yacq"
 date: 2012-12-05 05:40:51
@@ -13,7 +13,7 @@ tags:
 - Advent Calendar
 ---
 
-これは [Esolang Advent Calendar 2012](http://atnd.org/events/33784) の 4 日目の記事 (えっ) らしいです。
+これは [Esolang Advent Calendar 2012](http://atnd.org/events/33784) の 4 日目の記事 <small>(えっ)</small> らしいです。
 .NET における Expression Trees の簡単な紹介と、言語処理系のインフラストラクチャとしての利用についての簡単な紹介です。
 
 <!-- more -->
@@ -83,7 +83,7 @@ Expression<Func<int, int>> expr = n => n * n;
 
 即ち、自分で式ノード型を定義し、標準のノードへの変換を実装することで、最終的に標準の定義範囲内に収まることを保証してやることで、自前の AST を拡張の形で定義することができたりします。
 
-例えば、以下のようにして新しい式ノード型 DumpExpression を定義します。この式ノード型はオペランドとして式を 1 つ受け取り、それを Console.WriteLine し、オペランドをそのまま返すものです。
+例えば、以下のようにして新しい式ノード型 `DumpExpression` を定義します。この式ノード型はオペランドとして式を 1 つ受け取り、それを `Console.WriteLine` し、オペランドをそのまま返すものです。
 
 ```csharp
 public class DumpExpression : Expression
@@ -155,7 +155,7 @@ var ret = expr.Compile()(1000);
 
 ## .NET 言語 Yacq
 
-さて、上で Expression Trees を使うと .NET 言語を簡単に作れる、ということに言及しましたが、私の言語 **[Yacq](https://github.com/takeshik/yacq/)** <small>(本当は [こちら](http://yacq.net/) なのですが、サーバ停止中につきリンク切れてます)</small> は、これを実証するものです。(尤も、Yacq は現在かなりの機能を網羅しているため、簡単に作れる、という範囲のコード量ではないかもしれませんが…)
+さて、上で Expression Trees を使うと .NET 言語を簡単に作れる、ということに言及しましたが、私の言語 **[Yacq](http://yacq.net/)** <small>(GitHub: [takeshik/yacq](http://github.com/takeshik/yacq/))</small> は、これを実証するものです。(尤も、Yacq は現在かなりの機能を網羅しているため、簡単に作れる、という範囲のコード量ではないかもしれませんが…)
 
 Yacq は、Expression Trees の特徴、即ちコンパイル可能性、言語中立性、可搬性、および拡張性を忠実に活かしつつ、その上で使いやすいものへと仕上げています。
 
@@ -237,7 +237,7 @@ var expr = Expression.Lambda<Func<int, int>>(
 );
 ```
 
-Identifier は名前ベースの解決が行われ Parameter の参照となり、また .Method("print") は Console.WriteLine メソッドの呼出へと変換されます。
+`Identifier` は名前ベースの解決が行われ `Parameter` の参照となり、また `.Method("print")` は `Console.WriteLine` メソッドの呼出へと変換されます。
 
 やや掻い摘んだ説明となりましたが、以上のように、Yacq の AST は Expression Trees をベースとし、そこにライブラリ的要素を導入しつつも、あくまで Expression Trees の拡張として振る舞えるものとなっていることを説明しました。
 
@@ -296,5 +296,5 @@ var expr = Expression.Call(typeof(Enumerable), "Sum", null,
 
 # 関連記事
 
-* [Expression Trees with IL Emit](https://github.com/takeshik/articles/blob/master/dotnet/expression-trees-with-il-emit.md)
+* [Expression Trees with IL Emit](/blog/2011/12/14/expression-trees-with-il-emit/)
     * [C# Advent Calendar 2011](http://atnd.org/events/21988) で寄稿した記事。<br />Expression Trees 単体では型・アセンブリが作成できないので、IL Emit との禁断の合わせ技について解説
