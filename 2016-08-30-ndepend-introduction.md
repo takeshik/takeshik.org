@@ -1,7 +1,7 @@
 ﻿---
 layout: post
-title: "NDepend: お手軽 LINQ でコード解析"
-date: 2016-08-29 12:34
+title: "NDepend: LINQ for お手軽コード解析"
+date: 2016-08-29 15:00
 comments: true
 categories:
 - programming
