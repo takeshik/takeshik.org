@@ -167,7 +167,7 @@ var expr = YacqService.Parse("(\ [n:Int32] n.(print) n)");
 ((Expression<Func<int, int>>) expr).Compile()(123);
 ```
 
-と記述します。Parse メソッドは Expression<Func<int, int>> 型を返すので、(キャストして) 普通に Compile() して関数オブジェクトを生成することができます。
+と記述します。Parse メソッドは `Expression<Func<int, int>>` 型を返すので、(キャストして) 普通に `Compile()` して関数オブジェクトを生成することができます。
 
 そして、Yacq が Expression Trees の拡張性を十分に活かした構造となっているために、システムの利用可能な範囲を狭めることなく、より使いやすいものに仕上がっています。
 
