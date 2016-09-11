@@ -1,8 +1,11 @@
+---
 title: "About Me"
-date: 2015-01-16 06:31:25
+date: 2015-09-01 09:00:00
 comments: false
 sharing: false
 ---
+
+TL;DR: Takeshi KIRIYA (aka takeshik) <small>( [Mail](mailto:me_AT_takeshik_DOT_org) | [Twitter](https://twitter.com/takeshik) | [GitHub](https://github.com/takeshik) )</small> is .NET programmer in Tokyo.
 
 ## プロフィール
 
@@ -14,7 +17,7 @@ sharing: false
 * 職業
     * アプリケーション エンジニア
 * 居住地
-    * 東京都港区六本木
+    * 東京都品川区
 * 出身地
     * 千葉県
 
@@ -27,7 +30,7 @@ sharing: false
 * 二郎
     * 38 / 40 店舗踏破
         * 未踏: 会津若松駅前店, 新潟店,
-        * お気に入り: 仙川店, 品川店, 小岩店, 環七 (新) 新代田店,
+        * お気に入り: 仙川店, 環七新新代田店, 品川店, 小岩店,
 
 ## ソーシャル アカウント
 
@@ -35,15 +38,17 @@ sharing: false
     * 連絡先: [me AT takeshik DOT org](mailto:me_AT_takeshik_DOT_org)
     * Git user.email: [takeshik AT tksk DOT io](mailto:takeshik_AT_tksk_DOT_io)
 * Twitter (最も確実な連絡手段)
-    * [@takeshik](https://twitter.com/takeshik) ([favstar](http://favstar.fm/users/takeshik/recent) | [twilog](http://twilog.org/takeshik))
+    * [@takeshik](https://twitter.com/takeshik) ([twilog](http://twilog.org/takeshik) | [favolog](http://favolog.org/takeshik))
 * GitHub
     * [takeshik](https://github.com/takeshik) ([Gist](https://gist.github.com/takeshik))
 * Facebook
     * [takeshikj](https://www.facebook.com/takeshikj)
-* flickr
-    * [takeshikj](https://www.flickr.com/photos/takeshik/)
+* Docs.com
+    * [takeshik](https://docs.com/takeshik)
 * Keybase
     * [takeshik](https://keybase.io/takeshik)
+* flickr
+    * [takeshikj](https://www.flickr.com/photos/takeshik/)
 * はてな
     * [id:takeshik](http://www.hatena.ne.jp/takeshik/)
 * Amazon
