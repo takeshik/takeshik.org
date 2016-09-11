@@ -1,4 +1,4 @@
-﻿layout: post
+layout: post
 title: "この Visual Studio 拡張が熱い！"
 date: 2015-12-19 2:54:30
 comments: true

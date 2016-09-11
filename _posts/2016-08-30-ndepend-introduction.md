@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "NDepend: LINQ for お手軽コード解析"
 date: 2016-08-29 15:00

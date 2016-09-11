@@ -1,4 +1,4 @@
-﻿layout: post
+layout: post
 title: "C# の定義済み型キーワード、そして… Int32 やめます"
 date: 2015-12-06 13:07:00
 comments: true

@@ -1,4 +1,4 @@
-﻿layout: post
+layout: post
 title: "Object 型のインスタンスを活用"
 date: 2015-08-10 4:45:00
 comments: true

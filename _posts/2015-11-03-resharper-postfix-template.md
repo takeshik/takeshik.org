@@ -1,4 +1,4 @@
-﻿layout: post
+layout: post
 title: "ReSharper の Postfix Templates は神機能"
 date: 2015-11-03 22:15:00
 comments: true

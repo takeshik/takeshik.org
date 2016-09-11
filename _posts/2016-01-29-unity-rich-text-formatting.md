@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "Unity の Debug.Log 着色かんたん化への道"
 date: 2016-01-29 04:53

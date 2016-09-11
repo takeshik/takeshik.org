@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "Expression Trees をシリアライズする"
 date: 2012-12-14 22:58:07

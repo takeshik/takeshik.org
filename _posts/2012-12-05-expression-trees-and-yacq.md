@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "言語基盤としての Expression Trees、そして Yacq"
 date: 2012-12-05 05:40:51

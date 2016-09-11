@@ -1,4 +1,4 @@
-﻿layout: post
+layout: post
 title: "Keybase.io 使ってみた"
 date: 2015-09-23 10:15:00
 comments: true

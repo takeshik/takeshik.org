@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "Unity batch build の罠"
 date: 2014-09-01 01:30

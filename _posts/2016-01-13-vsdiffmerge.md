@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "Visual Studio を diff / merge ツールとして使う"
 date: 2016-01-13 03:20

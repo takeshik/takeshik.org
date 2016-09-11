@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "Interactive LINQPad: お手軽ポチポチ Rx"
 date: 2016-02-12 07:35

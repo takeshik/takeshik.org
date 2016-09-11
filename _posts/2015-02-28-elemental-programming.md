@@ -1,4 +1,4 @@
-﻿layout: post
+layout: post
 title: "エレメンタル プログラミングのすゝめ"
 date: 2015-02-28 01:54:05
 comments: true
